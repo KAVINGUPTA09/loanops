@@ -462,8 +462,15 @@ Or from the CLI:
 
 ```powershell
 python scripts\simulate_drift.py
+python -m src.validate_data --batch data/drift_log.csv
 python -m src.drift
 ```
+
+The batch validation command reports its size, missing values, duplicate rows
+and IDs, and `Loan_Status` distribution. It saves the JSON summary to
+`reports/new_data_validation.json`. Missing feature values are reported but
+allowed because the preprocessing pipeline imputes them; missing or invalid
+target labels and duplicate records/IDs fail validation.
 
 Inspect recent API predictions separately:
 
